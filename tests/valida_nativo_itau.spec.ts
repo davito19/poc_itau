@@ -27,27 +27,37 @@ test.describe('abrir pg itau', () => {
 
 //hasta aqui
     test('Ruta Beneficios Itau - Mi Itaú efectivo', async ({page}) => {
-        await page.screenshot({ path: 'Pagina_inicial.png' });
+        [
+            {
+                type:'Test',
+                description: 'Apertura de pagina inicial de ITAÚ',
 
-            await page.getByRole('button', {name: 'Beneficios Itaú'}).click();
-        await page.screenshot({ path: 'Pagina_inicial.png' });
+            },
+            await page.screenshot({ path: 'Pagina_inicial.png' }),
+            {
+                type:'Test',
+                description: 'click en beneficios ITAÚ',
 
+            },
+            await page.getByRole('button', {name: 'Beneficios Itaú'}).click(),
+            await page.screenshot({ path: 'beneficios_itau.png' }),
+            {
+                type:'Test',
+                description: 'Pantalla ITAÚ efectivo',
 
-        await allure.step("Paso 3: Detecta y da click en Mi Itaú Efectivo", async () => {
-            await allure.step("Paso 3.1 Da click y abre Mi ituaau en efectivo", async () => {
-                await page.getByRole('link', {name: 'Mi Itaú efectivo'}).click();
-                await allure.attachment("Mi itaú efectivo.png", await page.screenshot(), {
-                    contentType: "image/png",
-                });
-            });
-            await allure.step("Paso 3.2: Scroll hacia abajo", async () => {
-                await page.mouse.move(0, 1000);
-                await allure.attachment("Mi itaú efectivo_dd.png", await page.screenshot(), {
-                    contentType: "image/png",
-                });
-            });
+            },
+            await page.getByRole('link', {name: 'Mi Itaú efectivo'}).click(),
+            await page.screenshot({ path: 'itua_efectivo.png' }),
+            {
+                type:'Test',
+                description: 'Pantalla ITAÚ efectivo',
 
-        });
+            },
+            await page.mouse.move(0, 1000),
+        await page.screenshot({ path: 'itua_efectivo_SD.png' }),
+
+        ]
+
     });
 
 
